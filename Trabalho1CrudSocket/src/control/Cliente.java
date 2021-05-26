@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 public class Cliente {
 
     public static void main(String[] args) throws IOException{
+        //criando conexão
        System.out.println("Criando Conexão....");
         try  {
             Socket conn = new Socket("0.tcp.ngrok.io",13947);
