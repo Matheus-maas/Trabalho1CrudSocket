@@ -11,6 +11,8 @@ import model.Pessoa;
 
 public class Cliente {
 
+    static String opcao=null;
+    
     public static void exibirMenu() {
         String cpf = null;
         String nome = null;
@@ -18,7 +20,6 @@ public class Cliente {
 
         Scanner entrada = new Scanner(System.in);
         String aux = "";
-        String opcao = null;
         while (!aux.equalsIgnoreCase("sair")) {
             System.out.println("\n\n");
             System.out.println("+-------------------------------------------+");
@@ -92,7 +93,7 @@ public class Cliente {
                 p.getCpf();
                 p.getEndereco();
 
-                String msg = p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
+                String msg = opcao+p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
                 out.write(msg.getBytes());
 
             }
