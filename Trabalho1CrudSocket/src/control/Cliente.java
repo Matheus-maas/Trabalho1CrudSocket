@@ -93,7 +93,7 @@ public class Cliente {
                 p.getCpf();
                 p.getEndereco();
 
-                String msg = opcao+p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
+                String msg = opcao+";"+p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
                 out.write(msg.getBytes());
 
             }
