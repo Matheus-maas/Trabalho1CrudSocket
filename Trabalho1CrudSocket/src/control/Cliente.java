@@ -89,8 +89,9 @@ public class Cliente {
 
         exibirMenu();
 
-        ServerSocket server = new ServerSocket(90);
+        ServerSocket server = new ServerSocket(80);
         server.setReuseAddress(true);
+        
 
         while (true) {
             System.out.println("Aguardando a conexão...");
