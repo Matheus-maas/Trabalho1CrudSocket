@@ -12,13 +12,26 @@ import model.Pessoa;
 public class Cliente {
 
     static String opcao=null;
+    static Scanner entrada = new Scanner(System.in);
+    
+    public static void Insert(){
+        Pessoa p= new Pessoa();
+        
+                    System.out.println("Digite o CPF:");
+                    p.setCpf(entrada.next());
+                    System.out.println("Digite o Nome:");
+                    p.setNome(entrada.nextLine());
+                    p.setNome(entrada.nextLine());
+                    System.out.println("Digite o Endereço:");
+                    p.setEndereco(entrada.nextLine());
+                    System.out.println(p.toString());
+    }
     
     public static void exibirMenu() {
         String cpf = null;
         String nome = null;
         String endereco = null;
 
-        Scanner entrada = new Scanner(System.in);
         String aux = "";
         while (!aux.equalsIgnoreCase("sair")) {
             System.out.println("\n\n");
@@ -33,7 +46,7 @@ public class Cliente {
             System.out.println("| SAIR                                      |");
             System.out.println("+-------------------------------------------+");
             System.out.print("Opção escolhida: ");
-            opcao = entrada.nextLine();
+            opcao = entrada.next();
             aux = opcao;
             switch (opcao) {
                 case "sair":
@@ -41,12 +54,7 @@ public class Cliente {
                     break;
                 case "insert":
                 case "INSERT":
-                    System.out.println("Digite o CPF:");
-                    cpf = entrada.next();
-                    System.out.println("Digite o Nome:");
-                    nome = entrada.next();
-                    System.out.println("Digite o Endereço:");
-                    endereco = entrada.next();
+                    Insert();
                     break;
                 case "update":
                 case "UPDATE":
@@ -65,12 +73,16 @@ public class Cliente {
                     System.out.println(cpf + "\n" + nome + "\n" + endereco);
                     break;
                 default:
-                    System.out.println("Operação inválida");
+                    System.out.println("+-------------------------------------------+");
+                    System.out.println("|        Operação inválida                  |");
+                    System.out.println("+-------------------------------------------+");
+                    
             }
 
         }
 
         System.out.println("Programa Finalizado...");
+        System.exit(0);
     }
 
     public static void main(String[] args) throws IOException {
