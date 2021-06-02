@@ -11,7 +11,7 @@ import model.Pessoa;
 
 public class Conexao {
     
-    public void mandarMensagem() throws IOException{
+    public void mandarMensagem(Pessoa p) throws IOException{
         
      ServerSocket server = new ServerSocket(80);
         server.setReuseAddress(true);
@@ -24,7 +24,6 @@ public class Conexao {
                         + conn.getInetAddress().getHostAddress());
 
                 OutputStream out = conn.getOutputStream();
-                Pessoa p = new Pessoa();
                 p.getNome();
                 p.getCpf();
                 p.getEndereco();

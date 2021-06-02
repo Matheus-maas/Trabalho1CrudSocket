@@ -1,34 +1,18 @@
 package control;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 import model.Pessoa;
 
 public class Cliente {
 
-    static String opcao=null;
+    static String opcao = null;
     static Scanner entrada = new Scanner(System.in);
-    
-    public static void Insert(){
-        Pessoa p= new Pessoa();
-        
-                    System.out.println("Digite o CPF:");
-                    p.setCpf(entrada.next());
-                    System.out.println("Digite o Nome:");
-                    p.setNome(entrada.nextLine());
-                    p.setNome(entrada.nextLine());
-                    System.out.println("Digite o Endereço:");
-                    p.setEndereco(entrada.nextLine());
-                    System.out.println(p.toString());
-    }
-    
+
     public static void exibirMenu() throws IOException {
-        Conexao c= new Conexao();
+       
+        Conexao c = new Conexao();
+        Pessoa p = new Pessoa();
 
         String aux = "";
         while (!aux.equalsIgnoreCase("sair")) {
@@ -52,8 +36,15 @@ public class Cliente {
                     break;
                 case "insert":
                 case "INSERT":
-                    Insert();
-                    c.mandarMensagem();
+                    System.out.println("vamos inserir uma pessoa");
+                    System.out.println("Digite o CPF:");
+                    p.setCpf(entrada.next());
+                    System.out.println("Digite o Nome:");
+                    p.setNome(entrada.next());
+                    System.out.println("Digite o Endereço:");
+                    p.setEndereco(entrada.next());
+                    c.mandarMensagem(p);
+                    
                     break;
                 case "update":
                 case "UPDATE":
@@ -75,20 +66,18 @@ public class Cliente {
                     System.out.println("+-------------------------------------------+");
                     System.out.println("|        Operação inválida                  |");
                     System.out.println("+-------------------------------------------+");
-                    
+
             }
 
         }
 
         System.out.println("Programa Finalizado...");
     }
-    
 
     public static void main(String[] args) throws IOException {
 
         exibirMenu();
-        
-        
+
     }
 
 }
