@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import model.Pessoa;
 
@@ -8,12 +9,27 @@ public class Cliente {
 
     static String opcao = null;
     static Scanner entrada = new Scanner(System.in);
+    
+    public static void insert(Pessoa p){
+         System.out.println("Vamos inserir uma pessoa");
+         System.out.println("Digite o CPF:");
+         p.setCpf(entrada.next());
+         System.out.println("Digite o Nome:");
+         p.setNome(entrada.next());
+         System.out.println("Digite o Endereço:");
+         p.setEndereco(entrada.next());
+    }
+    
+    public static void update(){
+        System.out.println("Vamos atualizar uma Pessoa:");
+    }
 
     public static void exibirMenu() throws IOException {
        
         Conexao c = new Conexao();
         Pessoa p = new Pessoa();
-
+        ArrayList<Pessoa> pessoas = new ArrayList<>();
+        
         String aux = "";
         while (!aux.equalsIgnoreCase("sair")) {
             System.out.println("\n\n");
@@ -36,15 +52,13 @@ public class Cliente {
                     break;
                 case "insert":
                 case "INSERT":
-                    System.out.println("vamos inserir uma pessoa");
-                    System.out.println("Digite o CPF:");
-                    p.setCpf(entrada.next());
-                    System.out.println("Digite o Nome:");
-                    p.setNome(entrada.next());
-                    System.out.println("Digite o Endereço:");
-                    p.setEndereco(entrada.next());
+                    insert(p);
+                    pessoas.add(p);
+                    for(int i =0; i< pessoas.size(); i++){
+                        Pessoa auxiliar=pessoas.get(i);
+                        System.out.println(auxiliar.getCpf()+";\n"+auxiliar.getNome()+";\n"+auxiliar.getEndereco());
+                    }
                     c.mandarMensagem(p);
-                    
                     break;
                 case "update":
                 case "UPDATE":
@@ -60,7 +74,11 @@ public class Cliente {
                     break;
                 case "list":
                 case "LIST":
-                    System.out.println("vamos buscar uma pessoa");
+                        for(int i =0; i< pessoas.size(); i++){
+                        Pessoa auxiliar=pessoas.get(i);
+                        System.out.println(auxiliar.getCpf()+";\n"+auxiliar.getNome()+";\n"+auxiliar.getEndereco());
+                    }
+
                     break;
                 default:
                     System.out.println("+-------------------------------------------+");
