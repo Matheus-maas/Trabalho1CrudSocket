@@ -27,7 +27,7 @@ public class Servidor {
             }
 
         } catch (UnknownHostException e) {
-            System.out.println("Host não encotnrado");
+            System.out.println("Host não encontrado");
             e.printStackTrace();
         }
     }

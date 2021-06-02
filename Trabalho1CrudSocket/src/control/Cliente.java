@@ -27,10 +27,8 @@ public class Cliente {
                     System.out.println(p.toString());
     }
     
-    public static void exibirMenu() {
-        String cpf = null;
-        String nome = null;
-        String endereco = null;
+    public static void exibirMenu() throws IOException {
+        Conexao c= new Conexao();
 
         String aux = "";
         while (!aux.equalsIgnoreCase("sair")) {
@@ -55,6 +53,7 @@ public class Cliente {
                 case "insert":
                 case "INSERT":
                     Insert();
+                    c.mandarMensagem();
                     break;
                 case "update":
                 case "UPDATE":
@@ -70,7 +69,7 @@ public class Cliente {
                     break;
                 case "list":
                 case "LIST":
-                    System.out.println(cpf + "\n" + nome + "\n" + endereco);
+                    System.out.println("vamos buscar uma pessoa");
                     break;
                 default:
                     System.out.println("+-------------------------------------------+");
@@ -82,36 +81,14 @@ public class Cliente {
         }
 
         System.out.println("Programa Finalizado...");
-        System.exit(0);
     }
+    
 
     public static void main(String[] args) throws IOException {
 
         exibirMenu();
-
-        ServerSocket server = new ServerSocket(80);
-        server.setReuseAddress(true);
         
-
-        while (true) {
-            System.out.println("Aguardando a conexão...");
-            try (Socket conn = server.accept();) {
-
-                System.out.println("Conectado com:"
-                        + conn.getInetAddress().getHostAddress());
-
-                OutputStream out = conn.getOutputStream();
-                Pessoa p = new Pessoa();
-                p.getNome();
-                p.getCpf();
-                p.getEndereco();
-
-                String msg = opcao+";"+p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
-                out.write(msg.getBytes());
-
-            }
-        }
-
+        
     }
 
 }
