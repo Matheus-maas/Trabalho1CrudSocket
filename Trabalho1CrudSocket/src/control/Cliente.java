@@ -9,27 +9,28 @@ public class Cliente {
 
     static String opcao = null;
     static Scanner entrada = new Scanner(System.in);
-    
-    public static void insert(Pessoa p){
-         System.out.println("Vamos inserir uma pessoa");
-         System.out.println("Digite o CPF:");
-         p.setCpf(entrada.next());
-         System.out.println("Digite o Nome:");
-         p.setNome(entrada.next());
-         System.out.println("Digite o Endereço:");
-         p.setEndereco(entrada.next());
+
+    public static void insert(Pessoa p) {
+        System.out.println("Vamos inserir uma pessoa");
+        System.out.println("Digite o CPF:");
+        p.setCpf(entrada.next());
+        System.out.println("Digite o Nome:");
+        p.setNome(entrada.next());
+        System.out.println("Digite o Endereço:");
+        p.setEndereco(entrada.next());
+
     }
-    
-    public static void update(){
+
+    public static void update() {
         System.out.println("Vamos atualizar uma Pessoa:");
     }
 
     public static void exibirMenu() throws IOException {
-       
+
         Conexao c = new Conexao();
         Pessoa p = new Pessoa();
         ArrayList<Pessoa> pessoas = new ArrayList<>();
-        
+
         String aux = "";
         while (!aux.equalsIgnoreCase("sair")) {
             System.out.println("\n\n");
@@ -54,9 +55,9 @@ public class Cliente {
                 case "INSERT":
                     insert(p);
                     pessoas.add(p);
-                    for(int i =0; i< pessoas.size(); i++){
-                        Pessoa auxiliar=pessoas.get(i);
-                        System.out.println(auxiliar.getCpf()+";\n"+auxiliar.getNome()+";\n"+auxiliar.getEndereco());
+                    for (int i = 0; i < pessoas.size(); i++) {
+                        Pessoa auxiliar = pessoas.get(i);
+                        System.out.println(auxiliar.getCpf() + ";" + auxiliar.getNome() + ";" + auxiliar.getEndereco());
                     }
                     c.mandarMensagem(p);
                     break;
@@ -74,9 +75,9 @@ public class Cliente {
                     break;
                 case "list":
                 case "LIST":
-                        for(int i =0; i< pessoas.size(); i++){
-                        Pessoa auxiliar=pessoas.get(i);
-                        System.out.println(auxiliar.getCpf()+";\n"+auxiliar.getNome()+";\n"+auxiliar.getEndereco());
+                    for (int i = 0; i < pessoas.size(); i++) {
+                        Pessoa auxiliar = pessoas.get(i);
+                        System.out.println(auxiliar.getCpf() + ";\n" + auxiliar.getNome() + ";\n" + auxiliar.getEndereco());
                     }
 
                     break;
