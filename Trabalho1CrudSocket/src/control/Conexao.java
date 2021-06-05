@@ -22,21 +22,32 @@ public class Conexao {
                         + conn.getInetAddress().getHostAddress());
 
                 OutputStream out = conn.getOutputStream();
-                p.getNome();
-                p.getCpf();
-                p.getEndereco();
+                String tipo = opcao;
+                String nome = p.getNome();
+                String cpf = p.getCpf();
+                String endereco = p.getEndereco();
 
-//                String tipo = opcao;
-//                String tipoP = tipo.substring(0, 6);
-//                String cpfN = p.getCpf();
-//                String cpfP = cpfN.substring(7, 17);
-//                String nomeP = nome.substring(18, 116);
-//                p.setNome(reverteConversao(nome));
-//                String enderecoN = p.getEndereco();
-//                String enderecoP = enderecoN.substring(117, 226);
-//
-//;;            String msg = tipoP + ";" + nomeP + ";" + cpfP + ";" + enderecoP;
-                String msg = opcao + ";" + p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
+                int tipoTamanho = 6 - tipo.length();
+                int nomeTamanho = 11 - nome.length();
+                int cpfTamanho = 98 - cpf.length();
+                int enderecoTamanho = 109 - endereco.length();
+
+                for (int i = 0; i < tipoTamanho; i++) {
+                    tipo += "*";
+                }
+
+                for (int i = 0; i < cpfTamanho; i++) {
+                    cpf += "*";
+                }
+                for (int i = 0; i < nomeTamanho; i++) {
+                    nome += "*";
+                }
+
+                for (int i = 0; i < enderecoTamanho; i++) {
+                    endereco += "*";
+                }
+
+                String msg = opcao + ";" + cpf + ";" + nome + ";" + endereco;
                 out.write(msg.getBytes());
 
             }
