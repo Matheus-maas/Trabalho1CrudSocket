@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import model.Pessoa;
 
 public class Conexao {
@@ -23,33 +22,21 @@ public class Conexao {
                         + conn.getInetAddress().getHostAddress());
 
                 OutputStream out = conn.getOutputStream();
-                String tipo = opcao;
-                String nome = p.getNome();
-                String cpf = p.getCpf();
-                String endereco = p.getEndereco();
+                p.getNome();
+                p.getCpf();
+                p.getEndereco();
 
-                int tipoTamanho = 6-tipo.length();
-                int cpfTamanho = 11-cpf.length();
-                int nomeTamanho = 98-nome.length();
-                int enderecoTamanho = 109-endereco.length();
-                
-                for (int i=0; i<tipoTamanho; i++){
-                    tipo+="*";
-                }
-                for (int i=0; i<nomeTamanho; i++){
-                    nome+="*";
-                }
-                for (int i=0; i<cpfTamanho; i++){
-                    cpf+="*";
-                }
-                for (int i=0; i<enderecoTamanho; i++){
-                    endereco+="*";
-                }
-
-               
-                
-                String msg = tipo+cpf+nome+endereco;
-                //               String msg = opcao + ";" + p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
+//                String tipo = opcao;
+//                String tipoP = tipo.substring(0, 6);
+//                String cpfN = p.getCpf();
+//                String cpfP = cpfN.substring(7, 17);
+//                String nomeP = nome.substring(18, 116);
+//                p.setNome(reverteConversao(nome));
+//                String enderecoN = p.getEndereco();
+//                String enderecoP = enderecoN.substring(117, 226);
+//
+//;;            String msg = tipoP + ";" + nomeP + ";" + cpfP + ";" + enderecoP;
+                String msg = opcao + ";" + p.getNome() + ";" + p.getCpf() + ";" + p.getEndereco();
                 out.write(msg.getBytes());
 
             }
