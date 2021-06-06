@@ -1,7 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import model.Pessoa;
 
@@ -35,12 +34,19 @@ public class Cliente {
         String cpf=entrada.next();
         return cpf;
     }
+    
+    public static void List(Pessoa p) {
+        
+        p.setCpf(null);
+        p.setNome(null);
+        p.setEndereco(null);
+        
+    }
 
     public static void exibirMenu() throws IOException {
        
         Conexao c = new Conexao();
         Pessoa p = new Pessoa();
-        ArrayList<Pessoa> pessoas = new ArrayList<>();
         
         String aux = "";
         while (!aux.equalsIgnoreCase("sair")) {
@@ -65,7 +71,6 @@ public class Cliente {
                 case "insert":
                 case "INSERT":
                     insert(p);
-                    pessoas.add(p);
                     c.mandarMensagem(p);
                     break;
                 case "update":
@@ -83,11 +88,7 @@ public class Cliente {
                     break;
                 case "list":
                 case "LIST":
-                        for(int i =0; i< pessoas.size(); i++){
-                        Pessoa auxiliar=pessoas.get(i);
-                        System.out.println(auxiliar.getCpf()+";\n"+auxiliar.getNome()+";\n"+auxiliar.getEndereco());
-                    }
-
+                 c.mandarMensagem(p);
                     break;
                 default:
                     System.out.println("+-------------------------------------------+");

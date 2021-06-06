@@ -47,14 +47,14 @@ public class Conexao {
                     endereco += " ";
                 }
 
-                String msg = opcao + cpf+ nome + endereco;
+                String msg = opcao + cpf + nome + endereco;
                 out.write(msg.getBytes());
 
             }
         }
     }
-    
-    public void mandarMensagemString(String s) throws IOException{
+
+    public void mandarMensagemString(String s) throws IOException {
         ServerSocket server = new ServerSocket(80);
         server.setReuseAddress(true);
 
@@ -68,11 +68,11 @@ public class Conexao {
                 OutputStream out = conn.getOutputStream();
                 String msg = s;
                 out.write(msg.getBytes());
-    }
+            }
         }
     }
-    
-   /*public void enviarDados(String dados) throws IOException{
+
+    /*public void enviarDados(String dados) throws IOException{
                 ServerSocket server = new ServerSocket(80);
                 server.setReuseAddress(true);
 
@@ -87,6 +87,5 @@ public class Conexao {
                 String msg=dados;
                 out.write(msg.getBytes());
     }
-*/
+     */
 }
-    
