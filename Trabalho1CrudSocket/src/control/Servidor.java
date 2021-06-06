@@ -25,17 +25,25 @@ public class Servidor {
         p.setEndereco((String) dados.subSequence(117, 215));
         pessoasServidor.add(p);
     }
-    public static void update(){
-        
+
+    public static void update() {
+
     }
-    public static void get(){
-        
+
+    public static void get(String dados) {
+
+        Pessoa p = new Pessoa();
+        p.setCpf((String) dados.subSequence(6, 17));
+        pessoasServidor.get(1);
+
     }
-    public static void delete(){
-        
+
+    public static void delete() {
+
     }
-    public static void list(){
-        
+
+    public static void list() {
+
     }
 
     public static void main(String[] args) throws IOException {
@@ -50,21 +58,25 @@ public class Servidor {
             while (qtdBytesLidos >= 0) {
                 dadosStr = new String(dadosBrutos, 0, qtdBytesLidos);
                 qtdBytesLidos = in.read(dadosBrutos);
-                
+
                 if (dadosStr.toLowerCase().contains(tipo1.toLowerCase())) {
                     inserir(dadosStr);
                     for (int i = 0; i < pessoasServidor.size(); i++) {
                         Pessoa auxiliar = pessoasServidor.get(i);
-                        System.out.println("CPF: "+auxiliar.getCpf() + "\n" + "NOME: "+auxiliar.getNome() + "\n" +"ENDEREÇO: "+ auxiliar.getEndereco());
+                        System.out.println("CPF: " + auxiliar.getCpf() + "\n" + "NOME: " + auxiliar.getNome() + "\n" + "ENDEREÇO: " + auxiliar.getEndereco());
                     }
 
                 }
-                
+
                 if (dadosStr.toLowerCase().contains(tipo2.toLowerCase())) {
                     update();
                 }
                 if (dadosStr.toLowerCase().contains(tipo3.toLowerCase())) {
-                    get();
+                    get(dadosStr);
+                    for (int i = 0; i < pessoasServidor.size(); i++) {
+                        Pessoa auxiliar = pessoasServidor.get(i);
+                        System.out.println("CPF: " + auxiliar.getCpf() + "\n" + "NOME: " + auxiliar.getNome() + "\n" + "ENDEREÇO: " + auxiliar.getEndereco());
+                    }
                 }
                 if (dadosStr.toLowerCase().contains(tipo4.toLowerCase())) {
                     delete();
