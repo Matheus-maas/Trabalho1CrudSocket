@@ -30,8 +30,12 @@ public class Servidor {
         String cpf = ((String) dados.subSequence(6, 17));
         for (int i = 0; i < pessoasServidor.size(); i++) {
             if (pessoasServidor.get(i).getCpf().equalsIgnoreCase(cpf)) {
+                pessoasServidor.get(i).setCpf(cpf);
                 pessoasServidor.get(i).setNome(((String) dados.subSequence(17, 116)));
                 pessoasServidor.get(i).setEndereco(((String) dados.subSequence(117, 215)));
+                System.out.println("Pessoa alterada com sucesso.");
+            } else {
+                System.out.println("Pessoa não encontrada.");
             }
         }
     }
