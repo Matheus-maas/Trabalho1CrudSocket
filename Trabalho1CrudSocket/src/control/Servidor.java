@@ -17,6 +17,7 @@ public class Servidor {
     static String tipo5 = "list";
 
     static ArrayList<Pessoa> pessoasServidor = new ArrayList<>();
+    static Conexao c = new Conexao();
     static Pessoa p = new Pessoa();
 
     public static void inserir(String dados) {
@@ -96,12 +97,14 @@ public class Servidor {
 
                 if (dadosStr.toLowerCase().contains(tipo2.toLowerCase())) {
                     update(dadosStr);
+                    c.enviaRetornoCliente(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo3.toLowerCase())) {
                     get(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo4.toLowerCase())) {
                     delete(dadosStr);
+                    c.enviaRetornoCliente(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo5.toLowerCase())) {
                     list(dadosStr);

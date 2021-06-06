@@ -72,9 +72,9 @@ public class Conexao {
         }
     }
 
-    /*public void enviarDados(String dados) throws IOException{
-                ServerSocket server = new ServerSocket(80);
-                server.setReuseAddress(true);
+    public void enviaRetornoCliente(String dados) throws IOException {
+        ServerSocket server = new ServerSocket(80);
+        server.setReuseAddress(true);
 
         while (true) {
             System.out.println("Aguardando a conexão...");
@@ -84,8 +84,43 @@ public class Conexao {
                         + conn.getInetAddress().getHostAddress());
 
                 OutputStream out = conn.getOutputStream();
-                String msg=dados;
+                String msg = dados;
                 out.write(msg.getBytes());
+            }
+        }
     }
-     */
+    public void enviaGetCliente(String dados) throws IOException {
+        ServerSocket server = new ServerSocket(80);
+        server.setReuseAddress(true);
+
+        while (true) {
+            System.out.println("Aguardando a conexão...");
+            try ( Socket conn = server.accept();) {
+
+                System.out.println("Conectado com:"
+                        + conn.getInetAddress().getHostAddress());
+
+                OutputStream out = conn.getOutputStream();
+                String msg = dados;
+                out.write(msg.getBytes());
+            }
+        }
+    }
+    public void enviaListCliente(String dados) throws IOException {
+        ServerSocket server = new ServerSocket(80);
+        server.setReuseAddress(true);
+
+        while (true) {
+            System.out.println("Aguardando a conexão...");
+            try ( Socket conn = server.accept();) {
+
+                System.out.println("Conectado com:"
+                        + conn.getInetAddress().getHostAddress());
+
+                OutputStream out = conn.getOutputStream();
+                String msg = dados;
+                out.write(msg.getBytes());
+            }
+        }
+    }
 }
