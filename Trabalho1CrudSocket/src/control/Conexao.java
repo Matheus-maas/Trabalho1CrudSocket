@@ -29,22 +29,22 @@ public class Conexao {
 
                 int tipoTamanho = 6 - tipo.length();
                 int cpfTamanho = 11 - cpf.length();
-                int nomeTamanho = 99 - nome.length();
-                int enderecoTamanho = 99 - endereco.length();
+                int nomeTamanho = 100 - nome.length();
+                int enderecoTamanho = 100 - endereco.length();
 
                 for (int i = 0; i < tipoTamanho; i++) {
-                    tipo += "*";
+                    tipo += " ";
                 }
 
                 for (int i = 0; i < cpfTamanho; i++) {
-                    cpf += "*";
+                    cpf += " ";
                 }
                 for (int i = 0; i < nomeTamanho; i++) {
-                    nome += "*";
+                    nome += " ";
                 }
 
                 for (int i = 0; i < enderecoTamanho; i++) {
-                    endereco += "*";
+                    endereco += " ";
                 }
 
                 String msg = opcao + cpf+ nome + endereco;
