@@ -14,7 +14,7 @@ public class Conexao {
         ServerSocket server = new ServerSocket(80);
         server.setReuseAddress(true);
 
-        while (true) {
+        if (true) {
             System.out.println("Aguardando a conexão...");
             try ( Socket conn = server.accept();) {
 
@@ -55,15 +55,22 @@ public class Conexao {
 
     }
     
-    public void buscarPessoa() throws IOException{
-        ServerSocket server = new ServerSocket(80);
-        server.setReuseAddress(true);
-        try ( Socket conn = server.accept();) {
+    public void enviarDados(String dados) throws IOException{
+                ServerSocket server = new ServerSocket(80);
+                server.setReuseAddress(true);
+
+        while (true) {
+            System.out.println("Aguardando a conexão...");
+            try ( Socket conn = server.accept();) {
 
                 System.out.println("Conectado com:"
                         + conn.getInetAddress().getHostAddress());
-        }
-        
+
+                OutputStream out = conn.getOutputStream();
+                String msg=dados;
+                out.write(msg.getBytes());
     }
 
+}
+    }
 }

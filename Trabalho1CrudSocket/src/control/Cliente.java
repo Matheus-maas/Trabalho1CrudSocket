@@ -59,7 +59,7 @@ public class Cliente {
                 case "update":
                 case "UPDATE":
                     System.out.println("vamos atualizar uma pessoa");
-                    c.buscarPessoa();
+                    
                     break;
                 case "get":
                 case "GET":
