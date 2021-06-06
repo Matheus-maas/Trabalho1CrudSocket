@@ -29,8 +29,8 @@ public class Conexao {
 
                 int tipoTamanho = 6 - tipo.length();
                 int cpfTamanho = 11 - cpf.length();
-                int nomeTamanho = 98 - nome.length();
-                int enderecoTamanho = 109 - endereco.length();
+                int nomeTamanho = 99 - nome.length();
+                int enderecoTamanho = 99 - endereco.length();
 
                 for (int i = 0; i < tipoTamanho; i++) {
                     tipo += "*";
@@ -47,15 +47,32 @@ public class Conexao {
                     endereco += "*";
                 }
 
-                String msg = opcao + ";" + cpf + ";" + nome + ";" + endereco;
+                String msg = opcao + cpf+ nome + endereco;
                 out.write(msg.getBytes());
 
             }
         }
-
     }
     
-    public void enviarDados(String dados) throws IOException{
+    public void mandarMensagemUpdate(String s) throws IOException{
+        ServerSocket server = new ServerSocket(80);
+        server.setReuseAddress(true);
+
+        if (true) {
+            System.out.println("Aguardando a conexão...");
+            try ( Socket conn = server.accept();) {
+
+                System.out.println("Conectado com:"
+                        + conn.getInetAddress().getHostAddress());
+
+                OutputStream out = conn.getOutputStream();
+                String msg = s;
+                out.write(msg.getBytes());
+    }
+        }
+    }
+    
+   /*public void enviarDados(String dados) throws IOException{
                 ServerSocket server = new ServerSocket(80);
                 server.setReuseAddress(true);
 
@@ -70,7 +87,6 @@ public class Conexao {
                 String msg=dados;
                 out.write(msg.getBytes());
     }
-
+*/
 }
-    }
-}
+    

@@ -6,27 +6,20 @@ import java.io.InputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import model.Pessoa;
 
 
 public class Servidor {
    
     static String dadosStr=null; 
-    static ArrayList<String> dadosPessoas = new ArrayList<>();
+    static ArrayList<Pessoa> pessoasServidor = new ArrayList<>();
     
     public static void inserir(String dados){
-        dadosPessoas.add(dados);
-    
-    }
-    
-    public static void mostrarDados() throws IOException{
-        Conexao c=new Conexao();
-        String auxiliar=null;
-        for(int i =0; i< dadosPessoas.size(); i++){
-        auxiliar=auxiliar+dadosPessoas.get(i);
-        System.out.println(auxiliar);
-        c.enviarDados(auxiliar);
-         }
-            
+        Pessoa p=new Pessoa();
+        p.setCpf((String) dados.subSequence(6, 16));
+        p.setNome((String) dados.subSequence(17, 116));
+        p.setEndereco((String) dados.subSequence(117, 215));
+        pessoasServidor.add(p);
     }
 
     public static void main(String[] args) throws IOException{
@@ -43,9 +36,13 @@ public class Servidor {
                 System.out.println(dadosStr);
                 qtdBytesLidos = in.read(dadosBrutos);
                 inserir(dadosStr);
+                for(int i =0; i< pessoasServidor.size(); i++){
+                        Pessoa auxiliar=pessoasServidor.get(i);
+                        System.out.println(auxiliar.getCpf()+";\n"+auxiliar.getNome()+";\n"+auxiliar.getEndereco());
             }
 
-        } catch (UnknownHostException e) {
+        }
+        }catch (UnknownHostException e) {
             System.out.println("Host não encontrado");
             e.printStackTrace();
         }

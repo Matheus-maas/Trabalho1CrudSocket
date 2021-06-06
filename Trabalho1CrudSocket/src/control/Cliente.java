@@ -20,8 +20,14 @@ public class Cliente {
          p.setEndereco(entrada.next());
     }
     
-    public static void update(){
-        
+    public static String update(){
+        System.out.println("Qual o CPF da Pessoa?");
+        String cpf=entrada.next();
+        System.out.println("Digite o novo Nome: ");
+        String nome=entrada.next();
+        System.out.println("Digite o novo Endereço: ");
+        String endereco=entrada.next();
+        return cpf+nome+endereco;
     }
 
     public static void exibirMenu() throws IOException {
@@ -58,8 +64,8 @@ public class Cliente {
                     break;
                 case "update":
                 case "UPDATE":
-                    System.out.println("vamos atualizar uma pessoa");
-                    
+                    System.out.println("Vamos atualizar uma pessoa");
+                    c.mandarMensagemUpdate(update());
                     break;
                 case "get":
                 case "GET":
