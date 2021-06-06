@@ -54,10 +54,6 @@ public class Cliente {
                 case "INSERT":
                     insert(p);
                     pessoas.add(p);
-                    for(int i =0; i< pessoas.size(); i++){
-                        Pessoa auxiliar=pessoas.get(i);
-                        System.out.println(opcao+";"+auxiliar.getCpf()+";"+auxiliar.getNome()+";"+auxiliar.getEndereco());
-                    }
                     c.mandarMensagem(p);
                     break;
                 case "update":
