@@ -21,7 +21,7 @@ public class Cliente {
     }
     
     public static void update(){
-        System.out.println("Vamos atualizar uma Pessoa:");
+        
     }
 
     public static void exibirMenu() throws IOException {
@@ -59,6 +59,7 @@ public class Cliente {
                 case "update":
                 case "UPDATE":
                     System.out.println("vamos atualizar uma pessoa");
+                    c.buscarPessoa();
                     break;
                 case "get":
                 case "GET":

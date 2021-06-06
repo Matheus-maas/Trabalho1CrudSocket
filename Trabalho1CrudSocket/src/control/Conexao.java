@@ -28,8 +28,8 @@ public class Conexao {
                 String endereco = p.getEndereco();
 
                 int tipoTamanho = 6 - tipo.length();
-                int nomeTamanho = 11 - nome.length();
-                int cpfTamanho = 98 - cpf.length();
+                int cpfTamanho = 11 - cpf.length();
+                int nomeTamanho = 98 - nome.length();
                 int enderecoTamanho = 109 - endereco.length();
 
                 for (int i = 0; i < tipoTamanho; i++) {
@@ -53,6 +53,17 @@ public class Conexao {
             }
         }
 
+    }
+    
+    public void buscarPessoa() throws IOException{
+        ServerSocket server = new ServerSocket(80);
+        server.setReuseAddress(true);
+        try ( Socket conn = server.accept();) {
+
+                System.out.println("Conectado com:"
+                        + conn.getInetAddress().getHostAddress());
+        }
+        
     }
 
 }
