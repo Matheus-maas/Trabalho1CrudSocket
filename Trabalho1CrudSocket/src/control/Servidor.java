@@ -18,7 +18,7 @@ public class Servidor {
 
     static ArrayList<Pessoa> pessoasServidor = new ArrayList<>();
     static Pessoa p = new Pessoa();
-    
+
     public static void inserir(String dados) {
         p.setCpf((String) dados.subSequence(6, 17));
         p.setNome((String) dados.subSequence(17, 116));
@@ -27,8 +27,9 @@ public class Servidor {
     }
 
     public static void update(String dados) {
-          for (int i = 0; i < pessoasServidor.size(); i++) {
-            if(pessoasServidor.get(i).getCpf() == ((String) dados.subSequence(6, 17))){
+        String cpf = ((String) dados.subSequence(6, 17));
+        for (int i = 0; i < pessoasServidor.size(); i++) {
+            if (pessoasServidor.get(i).getCpf().equalsIgnoreCase(cpf)) {
                 pessoasServidor.get(i).setNome(((String) dados.subSequence(17, 116)));
                 pessoasServidor.get(i).setEndereco(((String) dados.subSequence(117, 215)));
             }
@@ -36,18 +37,34 @@ public class Servidor {
     }
 
     public static void get(String dados) {
+        String cpf = ((String) dados.subSequence(6, 17));
+
         for (int i = 0; i < pessoasServidor.size(); i++) {
-            if(pessoasServidor.get(i).getCpf() == ((String) dados.subSequence(6, 17))){
-                System.out.println(pessoasServidor.get(i).getNome()+";"+pessoasServidor.get(i).getEndereco());
+            if (pessoasServidor.get(i).getCpf().equalsIgnoreCase(cpf)) {
+                System.out.println(pessoasServidor.get(i).getNome() + ";" + pessoasServidor.get(i).getEndereco());
             }
         }
     }
 
-    public static void delete() {
+    public static void delete(String dados) {
+        String cpf = ((String) dados.subSequence(6, 17));
 
+        for (int i = 0; i < pessoasServidor.size(); i++) {
+            if (pessoasServidor.get(i).getCpf().equalsIgnoreCase(cpf)) {
+                pessoasServidor.remove(pessoasServidor.get(i));
+                System.out.println("Pessoa excluída com sucesso.");
+            } else {
+                System.out.println("Pessoa não encontrada.");
+            }
+        }
     }
 
-    public static void list() {
+    public static void list(String dados) {
+
+        for (int i = 0; i < pessoasServidor.size(); i++) {
+            Pessoa auxiliar = pessoasServidor.get(i);
+            System.out.println("CPF: " + auxiliar.getCpf() + ";" + "NOME: " + auxiliar.getNome() + ";" + "ENDEREÇO: " + auxiliar.getEndereco());
+        }
 
     }
 
@@ -80,10 +97,10 @@ public class Servidor {
                     get(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo4.toLowerCase())) {
-                    delete();
+                    delete(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo5.toLowerCase())) {
-                    list();
+                    list(dadosStr);
                 }
 
             }
