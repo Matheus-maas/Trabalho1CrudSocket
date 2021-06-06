@@ -54,7 +54,7 @@ public class Conexao {
         }
     }
     
-    public void mandarMensagemUpdate(String s) throws IOException{
+    public void mandarMensagemString(String s) throws IOException{
         ServerSocket server = new ServerSocket(80);
         server.setReuseAddress(true);
 

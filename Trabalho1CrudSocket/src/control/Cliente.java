@@ -29,6 +29,12 @@ public class Cliente {
         String endereco=entrada.next();
         return cpf+nome+endereco;
     }
+    
+    public static String get(){
+        System.out.println("Vamos buscar uma Pessoa pelo CPF: ");
+        String cpf=entrada.next();
+        return cpf;
+    }
 
     public static void exibirMenu() throws IOException {
        
@@ -65,11 +71,11 @@ public class Cliente {
                 case "update":
                 case "UPDATE":
                     System.out.println("Vamos atualizar uma pessoa");
-                    c.mandarMensagemUpdate(update());
+                    c.mandarMensagemString(update());
                     break;
                 case "get":
                 case "GET":
-                    System.out.println("vamos buscar uma pessoa");
+                    c.mandarMensagemString(get());
                     break;
                 case "delete":
                 case "DELETE":

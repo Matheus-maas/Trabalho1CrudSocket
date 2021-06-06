@@ -17,25 +17,30 @@ public class Servidor {
     static String tipo5 = "list";
 
     static ArrayList<Pessoa> pessoasServidor = new ArrayList<>();
-
+    static Pessoa p = new Pessoa();
+    
     public static void inserir(String dados) {
-        Pessoa p = new Pessoa();
         p.setCpf((String) dados.subSequence(6, 17));
         p.setNome((String) dados.subSequence(17, 116));
         p.setEndereco((String) dados.subSequence(117, 215));
         pessoasServidor.add(p);
     }
 
-    public static void update() {
-
+    public static void update(String dados) {
+          for (int i = 0; i < pessoasServidor.size(); i++) {
+            if(pessoasServidor.get(i).getCpf() == ((String) dados.subSequence(6, 17))){
+                pessoasServidor.get(i).setNome(((String) dados.subSequence(17, 116)));
+                pessoasServidor.get(i).setEndereco(((String) dados.subSequence(117, 215)));
+            }
+        }
     }
 
     public static void get(String dados) {
-
-        Pessoa p = new Pessoa();
-        p.setCpf((String) dados.subSequence(6, 17));
-        pessoasServidor.get(1);
-
+        for (int i = 0; i < pessoasServidor.size(); i++) {
+            if(pessoasServidor.get(i).getCpf() == ((String) dados.subSequence(6, 17))){
+                System.out.println(pessoasServidor.get(i).getNome()+";"+pessoasServidor.get(i).getEndereco());
+            }
+        }
     }
 
     public static void delete() {
@@ -69,14 +74,10 @@ public class Servidor {
                 }
 
                 if (dadosStr.toLowerCase().contains(tipo2.toLowerCase())) {
-                    update();
+                    update(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo3.toLowerCase())) {
                     get(dadosStr);
-                    for (int i = 0; i < pessoasServidor.size(); i++) {
-                        Pessoa auxiliar = pessoasServidor.get(i);
-                        System.out.println("CPF: " + auxiliar.getCpf() + "\n" + "NOME: " + auxiliar.getNome() + "\n" + "ENDEREÇO: " + auxiliar.getEndereco());
-                    }
                 }
                 if (dadosStr.toLowerCase().contains(tipo4.toLowerCase())) {
                     delete();
