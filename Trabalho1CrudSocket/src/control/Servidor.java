@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import model.Pessoa;
 
-public class ServidorPessoa {
+public class Servidor {
 
     static String dadosStr = null;
     static String tipo1 = "insert";
@@ -65,10 +65,12 @@ public class ServidorPessoa {
     }
 
     public static void list(String dados) {
+
         for (int i = 0; i < pessoasServidor.size(); i++) {
             Pessoa auxiliar = pessoasServidor.get(i);
             System.out.println("CPF: " + auxiliar.getCpf() + ";" + "NOME: " + auxiliar.getNome() + ";" + "ENDEREÇO: " + auxiliar.getEndereco());
         }
+
     }
 
     public static void main(String[] args) throws IOException {
@@ -95,14 +97,14 @@ public class ServidorPessoa {
 
                 if (dadosStr.toLowerCase().contains(tipo2.toLowerCase())) {
                     update(dadosStr);
-                   // c.enviaRetornoCliente(dadosStr);
+                    c.enviaRetornoCliente(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo3.toLowerCase())) {
                     get(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo4.toLowerCase())) {
                     delete(dadosStr);
-                   // c.enviaRetornoCliente(dadosStr);
+                    c.enviaRetornoCliente(dadosStr);
                 }
                 if (dadosStr.toLowerCase().contains(tipo5.toLowerCase())) {
                     list(dadosStr);

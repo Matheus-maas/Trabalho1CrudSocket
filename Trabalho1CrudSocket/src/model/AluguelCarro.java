@@ -1,11 +1,13 @@
+
 package model;
 
-public class AluguelCarro {
+import java.util.Date;
 
+
+public class AluguelCarro {
     Double preco;
-    String dataAluguel;
-    String dataVencimento;
-    Pessoa p;
+    Date dataAluguel;
+    Date dataVencimento;
 
     public Double getPreco() {
         return preco;
@@ -15,35 +17,21 @@ public class AluguelCarro {
         this.preco = preco;
     }
 
-    public String getDataAluguel() {
+    public Date getDataAluguel() {
         return dataAluguel;
     }
 
-    public void setDataAluguel(String dataAluguel) {
+    public void setDataAluguel(Date dataAluguel) {
         this.dataAluguel = dataAluguel;
     }
 
-    public String getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(String dataVencimento) {
+    public void setDataVencimento(Date dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
-
-    public Pessoa getP() {
-        return p;
-    }
-
-    public void setP(Pessoa p) {
-        this.p = p;
-    }
     
-
-    @Override
-    public String toString() {
-        return "AluguelCarro{" + "preco=" + preco + ", dataAluguel=" + dataAluguel + ", dataVencimento=" + dataVencimento + '}';
-    }
     
-
 }
